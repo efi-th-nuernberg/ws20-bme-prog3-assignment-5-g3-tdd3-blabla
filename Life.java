@@ -32,7 +32,7 @@ public class Life implements ILife {
 
   @Override
   public void nukeAll() {
-    // TODO Auto-generated method stub
+    //TODO Auto-generated method stub
     nextGen[0] = "     ";
     nextGen[1] = "     ";
     nextGen[2] = "     ";
