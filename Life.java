@@ -6,12 +6,12 @@ public class Life implements ILife {
                                       "     ",
                                       "     " };
 
-  private static String[] AliveReminder = {  "     ",
-                                          "     ",
-                                          "     ",
-                                          "     ",
-                                          "     " };
-  
+  private static String[] AliveReminder = { "     ",                             
+                                            "     ",
+                                            "     ",
+                                            "     ",
+                                            "     " };
+
   public static void main(String[] args) {
     Life l = new Life(nextGen);
     l = (Life) l.nextGeneration();
@@ -22,8 +22,7 @@ public class Life implements ILife {
   }
 
   public Life(String[] setup) {
-    this();
-    
+    this();  
     for (int y = 0; y < setup.length; y++)
       for (int x = 0; x < setup[y].length(); x++)
         if (setup[y].charAt(x) != ' ')
@@ -59,6 +58,8 @@ public class Life implements ILife {
     // TODO Auto-generated method stub
     AliveReminder[y] = AliveReminder[y].substring(0,x)+'*'+AliveReminder[y].substring(x + 1);
 
+     nextGen[y] = nextGen[y].substring(0,x)+'*'+nextGen[y].substring(x + 1);
+
   }
 
   @Override
@@ -70,8 +71,8 @@ public class Life implements ILife {
   @Override
   public boolean isAlive(int x, int y) {
     // TODO Auto-generated method stub
-    if(nextGen[y].charAt(x) == '*'){      
-      //System.out.println("Is alive works");      
+    if(nextGen[y].charAt(x) == '*')
+    {           
       return true; 
     }
     return false;
@@ -100,13 +101,13 @@ public class Life implements ILife {
     nukeAllReminder();
 
     return tmp;
+    
   }
 
   public int checkAround(int h, int v)
    { 
-     int counter = 0;
-
      //oben links
+     int counter = 0;
      if(h==0 && v==0)
      {
        if(isAlive(h + 1, v )) counter++;   //mitte rechts
@@ -141,13 +142,11 @@ public class Life implements ILife {
      //linker rand
      if (h==0 && v>0 && v!=4)
      {
-       //if(isAlive(h - 1, v -1)) counter++;   //oben links
-       //if(isAlive(h - 1, v)) counter++;   //mitte links
        if(isAlive(h, v +1)) counter++;   //unten mitte
        if(isAlive(h +1, v +1)) counter++;   //unten recht
        if(isAlive(h , v-1)) counter++;   //oben mitte 
        if(isAlive(h + 1, v )) counter++;   //mitte rechts
-       if(isAlive(h + 1, v - 1)) counter++;   //oben rechts
+       if(isAlive(h + 1, v - 1)) counter++;   //oben rechts  
      }
      
      //oberer rand
@@ -156,13 +155,11 @@ public class Life implements ILife {
        if(isAlive(h + 1, v )) counter++;   //mitte rechts
        if(isAlive(h +1, v +1)) counter++;   //unten recht
        if(isAlive(h, v +1)) counter++;   //unten mitte
-       //if(isAlive(h + 1, v - 1)) counter++;   //oben rechts
-       //if(isAlive(h , v-1)) counter++;   //oben mitte 
        if(isAlive(h - 1, v +1)) counter++;   //unten links
        if(isAlive(h - 1, v)) counter++;   //mitte links  
      }
-
-    //rechter Rand
+  
+  //rechter Rand
     if (h==4 && v>0 && v!=4)
     {
       if(isAlive(h - 1, v -1)) counter++;   //oben links
@@ -182,6 +179,7 @@ public class Life implements ILife {
       if(isAlive(h - 1, v)) counter++;   //mitte links
     }
 
+     // mitte
      if(h>0 && h<4 && v>0 && v<4)
      {
        if(isAlive(h - 1, v -1)) counter++;   //oben links
@@ -192,8 +190,7 @@ public class Life implements ILife {
        if(isAlive(h, v +1)) counter++;   //unten mitte 
        if(isAlive(h - 1, v +1)) counter++;   //unten links
        if(isAlive(h - 1, v)) counter++;   //mitte links
-       //System.out.println("Counter: " + counter);
      }
-     return(counter);
+     return(counter);    
   }
 }
