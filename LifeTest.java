@@ -4,8 +4,7 @@ import static org.junit.Assert.*;
 public class LifeTest {
     
     @Test
-    public void createNewCell() {
-        
+    public void createNewCell() {  
       // Arrange: drei lebende Zellen
       Life l = new Life();
       l.nukeAll();
@@ -19,7 +18,6 @@ public class LifeTest {
       // Assert: Rasterpunkt mit drei Nachbarn sollte jetzt leben
       assertTrue(nextGener.isAlive(1, 1));
     }
-    
 
 
     @Test
@@ -31,8 +29,8 @@ public class LifeTest {
       ILife nextGen = l.nextGeneration();
 
       assertFalse(nextGen.isAlive(1, 0));
+       
     }
-
 
     @Test
     public void keepAliveCell() {
@@ -46,7 +44,7 @@ public class LifeTest {
 
       assertTrue(nextGen.isAlive(1, 0));
     }
-
+     
     @Test
     public void destroyCrowdedCell() {
       Life l = new Life();
@@ -60,7 +58,7 @@ public class LifeTest {
       // Act: Berechnung der Folgegeneration
       ILife nextGen = l.nextGeneration();
 
-      // Assert: Rasterpunkt mit drei Nachbarn sollte jetzt leben
+      // Assert: Rasterpunkt mit vier Nachbarn sollte sterben
       assertFalse(nextGen.isAlive(1, 1));
 
       l.nukeAll();
@@ -75,7 +73,7 @@ public class LifeTest {
       // Act: Berechnung der Folgegeneration
       nextGen = l.nextGeneration();
 
-      // Assert: Rasterpunkt mit drei Nachbarn sollte jetzt leben
+      // Assert: Rasterpunkt mit 6 Nachbarn sollte sterben
       assertFalse(nextGen.isAlive(1, 1));
-    }
+    }   
 }
